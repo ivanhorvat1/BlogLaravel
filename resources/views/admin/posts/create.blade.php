@@ -37,7 +37,7 @@
                 </div>
                 <div class="form-group">
                     <label for="content">Content</label>
-                    <textarea name="content_form" id="content" cols="5" rows="5" class="form-control"></textarea>
+                    <textarea name="content_form" id="content" cols="10" rows="10" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
                     <div class="text-center">
@@ -49,4 +49,20 @@
             </form>
         </div>
     </div>
+@stop
+
+@section('styles')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.4/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.4/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+@stop
+
+@section('scripts')
+
+
+    <script>
+        $.getScript("{{ asset('js/froala.min.js') }}", function () { $( "textarea" ).froalaEditor(); });
+    </script>
 @stop

@@ -9,13 +9,15 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <!--<script src="{{ asset('js/toastr.min.js') }}"></script>-->
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>-->
+
+    @yield('styles')
 
 
     <!-- Fonts -->
@@ -24,7 +26,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <!--<link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">-->
+    <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -97,8 +99,11 @@
                                 </li>
                                 <li class="list-group-item">
                                     <a href="{{ route('user.create') }}">New user</a>
-                                </li> 
+                                </li>
                             @endif
+                            <li class="list-group-item">
+                                <a href="{{ route('user.profile') }}">My profile</a>
+                            </li>
                             <li class="list-group-item">
                                 <a href="{{ route('tag.create') }}">Create tag</a>
                             </li>
@@ -114,6 +119,11 @@
                             <li class="list-group-item">
                                 <a href="{{ route('post.create') }}">Create new post</a>
                             </li>
+                            @if(Auth::user()->admin)
+                                <li class="list-group-item">
+                                    <a href="{{ route('settings') }}">Settings</a>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 @endif
@@ -134,5 +144,7 @@
             toastr.info("{{ Session::get('info') }}")
         @endif
     </script>
+
+    @yield('scripts')
 </body>
 </html>

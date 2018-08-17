@@ -17,7 +17,7 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('slug');
-            $table->text('content');
+            $table->text('content_form');
             $table->integer('category_id');
             $table->string('featured');
             $table->softDeletes();
