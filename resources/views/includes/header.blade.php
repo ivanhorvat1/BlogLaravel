@@ -2,9 +2,9 @@
     <div class="container">
         <div class="header-content-wrapper">
             <div class="logo">
-                <div class="logo-text">
+                <a class="logo-text" href="{{ url('/') }}">
                     <div class="logo-title">{{ $settings->site_name }}</div>
-                </div>
+                </a>
             </div>
 
             <nav id="primary-menu" class="primary-menu">
@@ -23,6 +23,30 @@
                             <a href="{{ route('category.single', ['id' => $category->id]) }}">{{ $category->name }}</a>
                         </li>
                     @endforeach
+                        @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('home') }}">{{ __('Dashboard') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+
+                            </li>
+                            @endguest
                 </ul>
             </nav>
             <ul class="nav-add">
