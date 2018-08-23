@@ -52,7 +52,7 @@
 @stop
 
 @section('styles')
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.4/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
@@ -61,8 +61,15 @@
 
 @section('scripts')
 
-
-    <script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
+    <!--<script>
         $.getScript("{{ asset('js/froala.min.js') }}", function () { $( "textarea" ).froalaEditor(); });
+    </script>-->
+    <script>
+        $(function () {
+            ClassicEditor
+                    .create( document.querySelector( '#content' ))
+                    .then(function(editor){})
+        });
     </script>
 @stop

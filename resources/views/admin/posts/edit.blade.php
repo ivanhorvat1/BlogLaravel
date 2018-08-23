@@ -73,8 +73,15 @@
 
 @section('scripts')
 
-
-    <script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
+    <!--<script>
         $.getScript("{{ asset('js/froala.min.js') }}", function () { $( "textarea" ).froalaEditor(); });
+    </script>-->
+    <script>
+        $(function () {
+            ClassicEditor
+                    .create( document.querySelector( '#content' ))
+                    .then(function(editor){})
+        });
     </script>
 @stop
